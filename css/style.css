@@ -2742,4 +2742,16 @@ p {
     .alt-btn {
         min-width: 100%;
     }
+
+    .marquee-wrapper{
+        min-width: auto;
+        gap:25px;
+        animation-duration:18s;
+    }
 }
+}
+
+
+
+
+
