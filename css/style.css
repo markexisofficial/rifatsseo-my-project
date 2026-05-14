@@ -2668,6 +2668,157 @@ p {
     color: var(--text-primary);
 }
 
+/* marque   */
+.marquee-section {
+  width: 100%;
+  overflow: hidden;
+  background: #0b0f1a;
+  padding: 20px 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-content {
+  display: flex;
+  gap: 40px;
+  padding-right: 40px;
+  white-space: nowrap;
+  animation: scroll 25s linear infinite;
+}
+
+.marquee-item {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ic {
+  color: #00ffb3;
+  font-weight: bold;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* optional: pause on hover */
+.marquee-section:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+/* marque style 
+/* ── Marquee Shell ── */
+.marquee-section {
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface);
+  position: relative;
+  padding: 15px 0px 15px 0px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+ 
+/* subtle noise grain overlay */
+.marquee-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 180px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.5;
+}
+ 
+/* fade edges */
+.marquee-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 6%, transparent 94%, var(--bg) 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+ 
+/* ── Track ── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 38s linear infinite;
+  height: var(--track-height);
+  align-items: center;
+  will-change: transform;
+}
+ 
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+ 
+@keyframes scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+ 
+/* ── Items ── */
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 32px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.25s ease;
+  cursor: default;
+}
+ 
+/* divider between items */
+.marquee-item + .marquee-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+}
+ 
+.marquee-item:hover {
+  color: var(--accent);
+}
+ 
+/* ── Icon ── */
+.ic {
+  font-size: 9px;
+  color: #3b82f6;
+  opacity: 0.85;
+  line-height: 1;
+  transition: opacity 0.25s ease, transform 0.3s ease;
+}
+ 
+.marquee-item:hover .ic {
+  opacity: 1;
+  transform: rotate(45deg);
+}
+
 /* ==========================================
    Additional Responsive Adjustments
    ========================================== */
@@ -2749,7 +2900,7 @@ p {
         animation-duration:18s;
     }
 }
-}
+
 
 
 
